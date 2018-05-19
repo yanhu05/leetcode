@@ -1,3 +1,2 @@
 # Leetcode
-Programming Mental Floss
-Algorithms and Data Structures
+Programming Mental Floss :: Algorithms and Data Structures
