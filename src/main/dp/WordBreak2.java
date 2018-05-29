@@ -17,11 +17,11 @@ public class WordBreak2 {
     }
 
     List<String> helper(String s) {
-        if(suffixMap.containsKey(s)){
+        if (suffixMap.containsKey(s)) {
             return suffixMap.get(s);
         }
         List<String> _list = new ArrayList<>();
-        if (s.length() == 0){
+        if (s.length() == 0) {
             _list.add("");
             return _list;
         }
@@ -32,8 +32,10 @@ public class WordBreak2 {
                 List<String> subList = helper(suffix);
                 for (String w : subList) {
                     StringBuilder sb = new StringBuilder(word);
-                    sb.append(" ").append(w);
-                    _list.add(sb.toString().trim());
+                    if (w.length() > 0) {
+                        sb.append(" ").append(w);
+                    }
+                    _list.add(sb.toString());
                 }
             }
         }
