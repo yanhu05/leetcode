@@ -31,18 +31,15 @@ class WordBreak2Test {
         wordDict = getWordDict(dict3);
         assertEquals(1, new WordBreak2().wordBreak("a", wordDict).size());
 
+        String[] dict4 = {"aaaa", "aaa"};
+        wordDict = getWordDict(dict4);
+        assertEquals(2, new WordBreak2().wordBreak("aaaaaaa", wordDict).size());
+
     }
 
-    @Test
-    void canBreakDown() {
-        String[] dict = {"cat", "cats", "and", "sand", "dog"};
-        List<String> wordDict = getWordDict(dict);
-        assertEquals(true, new WordBreak2().canBreakDown("cats", wordDict));
-        assertEquals(false, new WordBreak2().canBreakDown("cat", wordDict));
-    }
 
-    List<String> getWordDict(String[] strings ){
-        if(strings == null){
+    List<String> getWordDict(String[] strings) {
+        if (strings == null) {
             return Collections.emptyList();
         }
         return Arrays.asList(strings);
