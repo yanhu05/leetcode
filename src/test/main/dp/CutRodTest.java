@@ -19,7 +19,5 @@ class CutRodTest {
         assertEquals(24, cr.cutRodMemoization(rodLength, rodPrices1));
         assertEquals(24, cr.cutRodTabulation(rodLength, rodPrices1));
 
-
-
     }
 }
