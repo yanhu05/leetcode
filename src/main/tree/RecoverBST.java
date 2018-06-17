@@ -1,6 +1,8 @@
 package main.tree;
 
 
+import jdk.nashorn.api.tree.Tree;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,9 +16,57 @@ https://leetcode.com/problems/recover-binary-search-tree/description/
 
  */
 public class RecoverBST {
-    int pos = 0;
+    boolean found;
     TreeNode node1;
     TreeNode node2;
+
+    public void recoverTree(TreeNode root) {
+        if (root == null) return;
+        TreeNode min = new TreeNode(Integer.MIN_VALUE);
+        TreeNode max = new TreeNode(Integer.MAX_VALUE);
+        while (!validBST(root, min, max)) {
+            found = false;
+            node1 = node2 = null;
+            fixNodes(root, min, max);
+            int tmp = node1.val;
+            node1.val = node2.val;
+            node2.val = tmp;
+        }
+
+    }
+
+    private void fixNodes(TreeNode root, TreeNode min, TreeNode max) {
+        if (root == null || found) return;
+        if (root.val < min.val) {
+            found = true;
+            node1 = root;
+            node2 = min;
+            return;
+        }
+        if (root.val > max.val) {
+            found = true;
+            node1 = root;
+            node2 = max;
+            return;
+        }
+        fixNodes(root.left, min, root);
+        fixNodes(root.right, root, max);
+    }
+
+    private boolean validBST(TreeNode root, TreeNode min, TreeNode max) {
+        if (root == null) return true;
+        if (root.val < min.val) {
+            return false;
+        }
+        if (root.val > max.val) {
+            return false;
+        }
+        return validBST(root.left, min, root) && validBST(root.right, root, max);
+    }
+
+
+    //  O(n) time and O(n) space
+    int pos = 0;
 
     public void recoverTreeExtraSpace(TreeNode root) {
         List<TreeNode> list = new ArrayList<>();
