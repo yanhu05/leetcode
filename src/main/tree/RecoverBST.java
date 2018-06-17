@@ -1,13 +1,8 @@
 package main.tree;
 
 
-import jdk.nashorn.api.tree.Tree;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /*
@@ -16,52 +11,36 @@ https://leetcode.com/problems/recover-binary-search-tree/description/
 
  */
 public class RecoverBST {
-    boolean found;
+
     TreeNode node1;
     TreeNode node2;
+    TreeNode previous = new TreeNode(Integer.MIN_VALUE);
 
     public void recoverTree(TreeNode root) {
         if (root == null) return;
-        TreeNode min = new TreeNode(Integer.MIN_VALUE);
-        TreeNode max = new TreeNode(Integer.MAX_VALUE);
-        while (!validBST(root, min, max)) {
-            found = false;
-            node1 = node2 = null;
-            fixNodes(root, min, max);
-            int tmp = node1.val;
-            node1.val = node2.val;
-            node2.val = tmp;
-        }
-
+        findNodes(root);
+        swap(node1, node2);
     }
 
-    private void fixNodes(TreeNode root, TreeNode min, TreeNode max) {
-        if (root == null || found) return;
-        if (root.val < min.val) {
-            found = true;
-            node1 = root;
-            node2 = min;
-            return;
+    private void findNodes(TreeNode root) {
+        if (root == null) return;
+        findNodes(root.left);
+
+        if (node1 != null && root.val < previous.val) {
+            node2 = root;
         }
-        if (root.val > max.val) {
-            found = true;
-            node1 = root;
-            node2 = max;
-            return;
+        if (node1 == null && root.val < previous.val) {
+            node1 = previous;
+            node2 = root;
         }
-        fixNodes(root.left, min, root);
-        fixNodes(root.right, root, max);
+        previous = root;
+        findNodes(root.right);
     }
 
-    private boolean validBST(TreeNode root, TreeNode min, TreeNode max) {
-        if (root == null) return true;
-        if (root.val < min.val) {
-            return false;
-        }
-        if (root.val > max.val) {
-            return false;
-        }
-        return validBST(root.left, min, root) && validBST(root.right, root, max);
+    private void swap(TreeNode node1, TreeNode node2) {
+        int tmp = node1.val;
+        node1.val = node2.val;
+        node2.val = tmp;
     }
 
 
