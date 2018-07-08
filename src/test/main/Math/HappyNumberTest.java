@@ -12,5 +12,11 @@ class HappyNumberTest {
 
         assertEquals(true, new HappyNumber().isHappy(133));
         assertEquals(false, new HappyNumber().isHappy(197));
+
+        assertEquals(true, new HappyNumber().isHappyCycleDetection(19));
+        assertEquals(false, new HappyNumber().isHappyCycleDetection(197));
+
+        assertEquals(true, new HappyNumber().isHappyCycleDetection(1));
+        assertEquals(false, new HappyNumber().isHappyCycleDetection(10));
     }
 }
