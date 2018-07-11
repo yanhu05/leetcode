@@ -7,6 +7,10 @@ misguided by the difficulty level. Tried to solve it using greedy or union find
 
 Lesson learned:  Always try brute force first
 
+O(n) solution using cyclic swapping
+
+https://leetcode.com/problems/couples-holding-hands/discuss/113362/JavaC++-O(N)-solution-using-cyclic-swapping
+
 */
 
 public class CouplesHoldingHands {

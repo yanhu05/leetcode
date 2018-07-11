@@ -19,9 +19,7 @@ public class PartitionLabels {
 
     public List<Integer> partitionLabels(String S) {
         List<Integer> list = new ArrayList<>();
-        int[] visited = new int[26];
         int[] lastPOS = new int[26];
-
         for (int i = 0; i < S.length(); i++) {
             char c = S.charAt(i);
             lastPOS[c - 'a'] = i;
@@ -31,19 +29,10 @@ public class PartitionLabels {
         for (int i = 0; i < S.length(); i++) {
             char c = S.charAt(i);
             int index = c - 'a';
-            if (visited[index] > 0) {
-                if (secondPointer == i) {
-                    list.add(i - start + 1);
-                    start = i + 1;
-                }
-                continue;
-            }
-            visited[index] = c;
             int lastPos = lastPOS[index];
             if (lastPos > secondPointer) {
                 secondPointer = lastPos;
             }
-
             if (secondPointer == i) {
                 list.add(i - start + 1);
                 start = i + 1;

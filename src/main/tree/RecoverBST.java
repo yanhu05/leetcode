@@ -9,6 +9,10 @@ import java.util.stream.Collectors;
 
 https://leetcode.com/problems/recover-binary-search-tree/description/
 
+Thought process : Always start from the bottom and see how to arrival at the results
+
+1:  It is a BST.  It screams In order traversal
+2:  Find a simple example and look for patterns  such as  3, 7, 5, 8  and 3, 7, 5, 4. These are 2 different cases
  */
 public class RecoverBST {
 
