@@ -21,14 +21,8 @@ public class HappyNumber {
         Set<Integer> seen = new HashSet<>();
         int num = n;
         while (seen.add(num)) {
-            int sum = 0;
-            while (num > 0) {
-                int digit = num % 10;
-                num = num / 10;
-                sum += Math.pow(digit, 2);
-            }
-            if (sum == 1) return true;
-            num = sum;
+            num = helper(num);
+            if (num == 1) return true;
         }
         return false;
     }
@@ -39,7 +33,7 @@ public class HappyNumber {
         do {
             if (slow == 1 || fast == 1) return true;
             slow = helper(slow);
-            fast = helper(helper(fast));
+            fast = (helper(helper(fast)));
         } while (slow != fast);
 
         return false;
