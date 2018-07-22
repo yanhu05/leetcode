@@ -1,4 +1,4 @@
-package main.Math;
+package main.math;
 
 /*
 https://leetcode.com/problems/excel-sheet-column-number/description/

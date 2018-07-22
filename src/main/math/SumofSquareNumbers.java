@@ -1,4 +1,4 @@
-package main.Math;
+package main.math;
 
 public class SumofSquareNumbers {
 

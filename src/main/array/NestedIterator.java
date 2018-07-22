@@ -1,5 +1,11 @@
 package main.array;
 
+/*
+
+https://leetcode.com/problems/flatten-nested-list-iterator/description/
+
+ */
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
