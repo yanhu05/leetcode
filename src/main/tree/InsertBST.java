@@ -3,13 +3,14 @@ package main.tree;
 public class InsertBST {
 
     public TreeNode insertIntoBST(TreeNode root, int val) {
-        insert(root, val);
+        if (root == null) return root;
+        TreeNode node = new TreeNode(val);
+        insert(root, node);
         return root;
     }
 
-    private void insert(TreeNode root, int val) {
-        if (root == null) return;
-        TreeNode node = new TreeNode(val);
+    private void insert(TreeNode root, TreeNode node) {
+        int val = node.val;
         if (root.left == null && val < root.val) {
             root.left = node;
             return;
@@ -19,19 +20,10 @@ public class InsertBST {
             return;
         }
 
-        if (root.left == null && root.right == null) {
-            if (val < root.val) {
-                root.left = node;
-            } else {
-                root.right = node;
-            }
-            return;
-        }
-
         if (root.left != null && val < root.val) {
-            insert(root.left, val);
+            insert(root.left, node);
         } else if (root.right != null && val > root.val) {
-            insert(root.right, val);
+            insert(root.right, node);
         }
     }
 }

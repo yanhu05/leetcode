@@ -13,7 +13,7 @@ public class TwoSumSorted {
             } else if (sum < target) {
                 i++;
             } else {
-                j++;
+                j--;
             }
         }
         return res;
