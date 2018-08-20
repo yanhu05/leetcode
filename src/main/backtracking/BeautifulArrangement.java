@@ -1,5 +1,10 @@
 package main.backtracking;
 
+/*
+
+https://leetcode.com/problems/beautiful-arrangement/description/
+
+ */
 public class BeautifulArrangement {
 
     int count = 0;

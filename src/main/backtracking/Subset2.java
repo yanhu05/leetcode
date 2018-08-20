@@ -4,8 +4,12 @@ import java.util.*;
 
 /*
 
-https://leetcode.com/submissions/detail/163823465/
+https://leetcode.com/problems/subsets-ii/
 
+Must sort it first
+For example;  [1,2,2,1]
+Without sorting it, we'd have [1, 2] and [2,1], which is incorrect
+With sorting [1,1,2,2], There is no way we can we subsets like the ones above
 
  */
 public class Subset2 {
